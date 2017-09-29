@@ -17,7 +17,7 @@ Ce fichier charge les éléments suivants:
 
 ## Fonctionnement
 
-Des gouttes tombent et représentent les secondes. Les verres se remplissent petit à petit et montre les minutes et secondes.
+Des gouttes tombent et représentent les secondes. Les verres se remplissent petit à petit et montrent les minutes et secondes.
 
 Automne 2017  
 Eracom, Lausanne
