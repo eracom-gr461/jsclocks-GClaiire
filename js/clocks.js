@@ -26,31 +26,31 @@ function metronome() {
 		var minuteFond = 0;
 		var heureFond = 0;
 
-		var bleu = "#36A9E1"
+		var bleu = "#36A9E1";
+		var blanc = "#fff";
 
 		// sélectionner l'ensemble des minutes
-		var LesMinutes = document.querySelectorAll("#verre-min > path") ;
+		var LesMinutes = document.querySelectorAll("#verre-min > path");
 
-		var LesHeures = document.querySelectorAll("#verre-heure > path") ;
+		var LesHeures = document.querySelectorAll("#verre-heure > path");
+
+		var LesHeuresFond = document.querySelectorAll("#verre-heure-fond > path");
 
 		/*
 		 * Les Minutes
 		 **************
 		*/
-		// les chiffres vont de 0 à 59
 
-		// Vider le verre au moment zéro:
-		if ( minute === 0 ) {
-
-			// Tout en blanc:
+		// Tout en blanc:
 			for (i = 0; i < LesMinutes.length; i++) {
-    			LesMinutes[i].style.fill = "#fff";
+    			LesMinutes[i].style.fill = blanc;
 			}
 
-		} else {
+		// NB: les chiffres vont de 0 à 59.
+		// Il n'y a pas de minute "vide".
 
-			// coloriser l'élément correspondant à la seconde:
-			LesMinutes[minute].style.fill = bleu;
+				// coloriser l'élément correspondant à la seconde:
+				LesMinutes[minute].style.fill = bleu;
 
 			// Coloriser les secondes passées:
 			
@@ -59,17 +59,27 @@ function metronome() {
 			}
 
 			// Coloriser les parties masquées (de 61 à 74 : 13)
-			if ( minute >= 47 ) {
-				minuteFond = minute +14;
+			if ( minute >= 46 ) {
+				minuteFond = minute +14; // 60-73
 				LesMinutes[minuteFond].style.fill = bleu;
+				for (i = 60; i < minuteFond; i++) {
+	    		LesMinutes[i].style.fill = bleu;
+				}
 			}
 
-		}
 
 		/*
 		 * Les Heures
 		 **************
 		*/
+
+		// Initialiser: tout en blanc:
+		for (i = 0; i < LesHeures.length; i++) {
+  		LesHeures[i].style.fill = blanc;
+		}
+		for (i = 0; i < LesHeuresFond.length; i++) {
+	    LesHeuresFond[i].style.fill = blanc;
+		}
 
 		// Mettre l'heure au format 12h
 		if (heure > 12) {
@@ -78,26 +88,34 @@ function metronome() {
 			heure = 12;
 		}
 
-		// soustraire 1 pour que cela fonctionne (de 0 à 11):
+		// On aura un chiffre de 1 à 12.
+
+		// Correctif, pour aller de 0 à 11.
 		heure -= 1;
 
-		// coloriser l'élément correspondant à l'heure:
-		LesHeures[heure].style.fill = bleu;
-
-		// coloriser les heures passées:
+		// Coloriser l'élément correspondant à l'heure:
+			LesHeures[heure].style.fill = bleu;
+		
+		// Coloriser les heures passées:
 		
 		for (i = 0; i < heure; i++) {
     	LesHeures[i].style.fill = bleu;
 		}
 
-		// Coloriser les parties masquées
+		// Coloriser #verre-heure-fond (0-1-2)
 		if ( heure >= 9 ) {
-				heureFond = heure +3;
-				LesHeures[heureFond].style.fill = bleu;
+
+			heureFond = heure -9; // 0 - 2
+
+			LesHeuresFond[heureFond].style.fill = bleu;
+
+			for (i = 0; i < heureFond; i++) {
+    		LesHeuresFond[i].style.fill = bleu;
 			}
+
+		} // if >= 9
 
 		console.log(heure+"h"+minute);
 
-	}
+	} // end metronome()
 
-	
