@@ -66,9 +66,37 @@ function metronome() {
 
 		}
 
+		/*
+		 * Les Heures
+		 **************
+		*/
+
+		// Mettre l'heure au format 12h
+		if (heure > 12) {
+			heure -= 12;
+		} else if (heure === 0) {
+			heure = 12;
 		}
 
-		console.log(minute);
+		// soustraire 1 pour que cela fonctionne (de 0 à 11):
+		heure -= 1;
+
+		// coloriser l'élément correspondant à l'heure:
+		LesHeures[heure].style.fill = bleu;
+
+		// coloriser les heures passées:
+		
+		for (i = 0; i < heure; i++) {
+    	LesHeures[i].style.fill = bleu;
+		}
+
+		// Coloriser les parties masquées
+		if ( heure >= 9 ) {
+				heureFond = heure +3;
+				LesHeures[heureFond].style.fill = bleu;
+			}
+
+		console.log(heure+"h"+minute);
 
 	}
 
