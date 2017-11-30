@@ -6,6 +6,11 @@
  * Auteur: Mikael Elmblad, tcip.se
 */
 
+// Définition de variables globales
+
+// utilitaire pour boucles
+var i;
+
 // répéter la fonction metronone une fois par seconde
 
 var myVar = setInterval(function() {
@@ -14,26 +19,46 @@ var myVar = setInterval(function() {
 
 function metronome() {
 	  var date = new Date;
-		var minute = date.getMinutes();
-		var seconde = date.getSeconds();
+		// var minute = date.getMinutes();
+		var minute = date.getSeconds();
 		var heure = date.getHours();
 
+		var minuteFond = 0;
+		var heureFond = 0;
+
+		var bleu = "#36A9E1"
+
 		// sélectionner l'ensemble des minutes
-		var selection = document.querySelectorAll("#verre-min > path") ;
+		var LesMinutes = document.querySelectorAll("#verre-min > path") ;
 
-		// coloriser l'élément correspondant à la seconde:
-		selection[seconde].style.fill = "#36A9E1";
+		var LesHeures = document.querySelectorAll("#verre-heure > path") ;
 
-		// coloriser les secondes passées:
-		var i;
-		for (i = 0; i < seconde; i++) {
-    		selection[i].style.fill = "#36A9E1";
+		/*
+		 * Les Minutes
+		 **************
+		*/
+		// les chiffres vont de 0 à 59
+
+		// Vider le verre au moment zéro:
+		if ( minute === 0 ) {
+
+			// Tout en blanc:
+			for (i = 0; i < LesMinutes.length; i++) {
+    			LesMinutes[i].style.fill = "#fff";
+			}
+
+		} else {
+
+			// coloriser l'élément correspondant à la seconde:
+			LesMinutes[minute].style.fill = bleu;
+
+			// Coloriser les secondes passées:
+			
+			for (i = 0; i < minute; i++) {
+	    		LesMinutes[i].style.fill = bleu;
+			}
 		}
 
-		// vider le verre à la seconde zéro:
-		if ( seconde == 0 ) {
-			selection[seconde].style.fill = "#fff";
-			selection[0].style.fill = "#36A9E1";
 		}
 
 		console.log(minute);
