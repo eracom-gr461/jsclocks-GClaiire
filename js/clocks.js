@@ -16,29 +16,27 @@ function metronome() {
 	  var date = new Date;
 		var minute = date.getMinutes();
 		var seconde = date.getSeconds();
+		var heure = date.getHours();
 
-		// coloriser l'élément correspondant à la seconde:
+		// sélectionner l'ensemble des minutes
 		var selection = document.querySelectorAll("#verre-min > path") ;
 
+		// coloriser l'élément correspondant à la seconde:
 		selection[seconde].style.fill = "#36A9E1";
 
+		// coloriser les secondes passées:
 		var i;
 		for (i = 0; i < seconde; i++) {
     		selection[i].style.fill = "#36A9E1";
 		}
 
-		// vider à la seconde zéro:
+		// vider le verre à la seconde zéro:
 		if ( seconde == 0 ) {
 			selection[seconde].style.fill = "#fff";
 			selection[0].style.fill = "#36A9E1";
 		}
 
 		console.log(minute);
-	  // document.getElementById("seconde").innerHTML = seconde;
-		// document.getElementById("seconde").style.top = getRandom(10, 90)+'%';
-  	// document.getElementById("seconde").style.left = getRandom(10, 90)+'%';
-	  // test conditionnel
-
 
 	}
 
