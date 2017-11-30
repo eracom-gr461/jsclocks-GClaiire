@@ -57,6 +57,13 @@ function metronome() {
 			for (i = 0; i < minute; i++) {
 	    		LesMinutes[i].style.fill = bleu;
 			}
+
+			// Coloriser les parties masquées (de 61 à 74 : 13)
+			if ( minute >= 47 ) {
+				minuteFond = minute +14;
+				LesMinutes[minuteFond].style.fill = bleu;
+			}
+
 		}
 
 		}
