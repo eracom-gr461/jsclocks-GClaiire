@@ -19,8 +19,8 @@ var myVar = setInterval(function() {
 
 function metronome() {
 	  var date = new Date;
-		// var minute = date.getMinutes();
-		var minute = date.getSeconds();
+		var minute = date.getMinutes();
+		// var minute = date.getSeconds();
 		var heure = date.getHours();
 
 		var minuteFond = 0;
@@ -115,7 +115,7 @@ function metronome() {
 
 		} // if >= 9
 
-		console.log(heure+"h"+minute);
+		// console.log(heure+"h"+minute);
 
 	} // end metronome()
 
